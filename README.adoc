@@ -1,0 +1,3 @@
+`data/latLons.csv` is a combination of running `fill_in_locations.py` and then appending `missing_locations.py`
+
+`data/extrapolatedLatLons.csv` is from running `locations.py` and works out locations from nearby stations
