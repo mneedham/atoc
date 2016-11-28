@@ -32,7 +32,7 @@ def get_journey(from_station, to_station, time):
         ORDER BY start.timeSecondsSinceStartOfDay
         LIMIT 1
         MATCH (finish:Station {name: {to}})
-        CALL training.markAStar(start, finish, 'NEXT>|WAIT>|AT>', 'time', 'lat', 'lon') YIELD path, weight
+        CALL atoc.astar(start, finish, 'NEXT>|WAIT>|AT>', 'time', 'lat', 'lon') YIELD path, weight
         WITH path ORDER BY weight  LIMIT 1
         UNWIND [x in nodes(path) WHERE x:Stop | x ] AS stop
         MATCH (route)-[:HAS_STOP|:PASSED_THROUGH]->(stop)-[:AT]->(location)
